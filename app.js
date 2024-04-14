@@ -34,7 +34,7 @@ app.listen(port, () => {
   console.log(`app listening on port ${port}`);
 });
 
-app.get('/message', (req, res) => {
+app.get('/', (req, res) => {
   res.json({ message: 'Hello from server!' });
 });
 
