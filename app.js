@@ -13,6 +13,7 @@ const port = process.env.PORT || 8080;
 
 const authRoute = require('./routes/authRoutes');
 const userRoute = require('./routes/userRoutes');
+const categoryRoute = require('./routes/categoryRoutes');
 
 app.use(bodyParser.json());
 app.use(express.static(__dirname));
@@ -40,5 +41,6 @@ app.get('/', (req, res) => {
 
 app.use(authRoute);
 app.use('/users', userRoute);
+app.use('/categories', categoryRoute);
 
 module.exports = app;
