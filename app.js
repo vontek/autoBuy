@@ -40,3 +40,5 @@ app.get('/message', (req, res) => {
 
 app.use(authRoute);
 app.use('/users', userRoute);
+
+module.exports = app;
