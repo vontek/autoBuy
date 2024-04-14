@@ -4,6 +4,8 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
+const secretKey = process.env.JWT_SECRET_KEY;
+
 exports.register = async (req, res) => {
   try {
     const { fullName, email, password, phoneNumber, address } = req.body;
@@ -59,7 +61,7 @@ exports.login = async (req, res) => {
       expiresIn: '1h'
     });
 
-    res.status(200).json({ token, userId: user._id });
+    res.status(200).json({ token, userId: user._id, user });
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: 'Authentication failed' });
