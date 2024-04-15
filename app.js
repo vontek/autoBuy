@@ -15,6 +15,7 @@ const carRoute = require('./routes/carRoute');
 const authRoute = require('./routes/authRoutes');
 const userRoute = require('./routes/userRoutes');
 const categoryRoute = require('./routes/categoryRoutes');
+const transactionRoute = require('./routes/transactionRoute');
 
 app.use(bodyParser.json());
 app.use(express.static(__dirname));
@@ -44,5 +45,6 @@ app.use(authRoute);
 app.use('/cars', carRoute);
 app.use('/users', userRoute);
 app.use('/categories', categoryRoute);
+app.use('/transactions', transactionRoute);
 
 module.exports = app;
