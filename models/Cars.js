@@ -29,6 +29,11 @@ const carSchema = new Schema(
       type: String,
       required: true
     },
+    location: {
+      city: { type: String, trim: true },
+      state: { type: String, trim: true },
+      country: { type: String, trim: true }
+    },
     model: {
       type: String,
       required: true
@@ -45,7 +50,7 @@ const carSchema = new Schema(
       enum: ['New', 'Used', 'Certified Pre-owned', 'Accidented']
     },
     color: {
-      color: String
+      type: String
     },
     price: {
       type: Number,

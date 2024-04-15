@@ -22,9 +22,14 @@ const transactionSchema = new Schema(
       type: Number,
       required: true
     },
-    type: {
+    transaction_type: {
       type: String,
-      enum: ['Buy', 'Sell'],
+      enum: ['buy', 'sell'],
+      required: true
+    },
+    transaction_status: {
+      type: String,
+      enum: ['pending', 'completed', 'cancelled'],
       required: true
     }
   },

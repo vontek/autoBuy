@@ -12,6 +12,7 @@ exports.createCar = async (req, res) => {
         publicId: uploadedImage.public_id
       });
     }
+    let { city, state, country } = req.body.location;
 
     let category = await Categories.findOne({ category: req.body.category });
 
@@ -29,6 +30,7 @@ exports.createCar = async (req, res) => {
       carImages: uploadedImages,
       category: category._id,
       brand: req.body.brand,
+      location: { city, state, country },
       model: req.body.model,
       year: req.body.year,
       mileage: req.body.mileage,
