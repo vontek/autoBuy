@@ -14,6 +14,8 @@ const port = process.env.PORT || 8080;
 const carRoute = require('./routes/carRoute');
 const authRoute = require('./routes/authRoutes');
 const userRoute = require('./routes/userRoutes');
+const chatRoute = require('./routes/chatRoutes');
+const messageRoute = require('./routes/messageRoutes');
 const categoryRoute = require('./routes/categoryRoutes');
 const transactionRoute = require('./routes/transactionRoute');
 
@@ -43,7 +45,9 @@ app.get('/', (req, res) => {
 
 app.use(authRoute);
 app.use('/cars', carRoute);
+app.use('/chats', chatRoute);
 app.use('/users', userRoute);
+app.use('/messages', messageRoute);
 app.use('/categories', categoryRoute);
 app.use('/transactions', transactionRoute);
 
