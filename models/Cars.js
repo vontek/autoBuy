@@ -8,16 +8,18 @@ const carSchema = new Schema(
       ref: 'User',
       required: true
     },
-    carImage: {
-      url: {
-        type: String,
-        required: true
-      },
-      publicId: {
-        type: String,
-        required: true
+    carImages: [
+      {
+        url: {
+          type: String,
+          required: true
+        },
+        publicId: {
+          type: String,
+          required: true
+        }
       }
-    },
+    ],
     category: {
       type: Schema.Types.ObjectId,
       ref: 'Categories',

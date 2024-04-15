@@ -1,16 +1,33 @@
 const Car = require('../models/Cars');
+const Categories = require('../models/Categories');
 const cloudinary = require('../config/cloudinary');
 
 exports.createCar = async (req, res) => {
   try {
-    const uploadedImage = await cloudinary.uploader.upload(req.file.path);
-    const car = new Car({
-      user: req.body.user,
-      carImage: {
+    const uploadedImages = [];
+    for (const file of req.files) {
+      const uploadedImage = await cloudinary.uploader.upload(file.path);
+      uploadedImages.push({
         url: uploadedImage.secure_url,
         publicId: uploadedImage.public_id
-      },
-      category: req.body.category,
+      });
+    }
+
+    let category = await Categories.findOne({ category: req.body.category });
+
+    if (!category) {
+      category = await Categories.findOne({ name: req.body.category });
+
+      if (!category) {
+        category = new Categories({ name: req.body.category });
+        await category.save();
+      }
+    }
+
+    const car = new Car({
+      user: req.body.user,
+      carImages: uploadedImages,
+      category: category._id,
       brand: req.body.brand,
       model: req.body.model,
       year: req.body.year,
@@ -22,10 +39,11 @@ exports.createCar = async (req, res) => {
     });
 
     await car.save();
-    res.status(201).json(car);
+    // console.log(car);
+    res.status(201).json({ message: 'Car created successfully', car });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: 'Internal Server Error' });
+    res.status(500).json({ message: 'Internal Server Error', error: error.message });
   }
 };
 
