@@ -1,4 +1,4 @@
-import 'src/App.css';
+import './App.css';
 import { router } from './routes/route';
 import { RouterProvider } from 'react-router-dom';
 import { ThemeProvider } from '@material-tailwind/react';

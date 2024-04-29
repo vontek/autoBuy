@@ -1,25 +1,28 @@
-// tailwind.config.js
-module.exports = {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
-  darkMode: false, // or 'media' or 'class'
+/** @type {import('tailwindcss').Config} */
+const withMT = require("@material-tailwind/react/utils/withMT");
+module.exports = withMT({
+  content: [
+    "./index.html",
+    "./src/**/*.{vue,js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {
       colors: {
         // Primary colors
-        primary: {
-          light: '#e6ebf0',
-          lighthover: '#d9e2e9',
-          lightactive: '#b0c2d2',
-          normal: '#003b6d',
-          normalhover: '#003562',
-          normalactive: '#002f57',
-          dark: '#002c52',
-          darkhover: '#002341',
-          darkactive: '#001b31',
-          darker: '#001526'
+        'primary': {
+         light:'#e6ebf0',
+         lighthover: '#d9e2e9',
+         lightactive: '#b0c2d2',
+         normal: '#003b6d',
+         normalhover: '#003562',
+         normalactive: '#002f57',
+         dark:'#002c52',
+         darkhover: '#002341',
+         darkactive: '#001b31',
+         darker: '#001526'
         },
         // Secondary colors
-        secondary: {
+        'secondary': {
           light: '#e6f9f8',
           lighthover: '#d9f6f5',
           lightactive: '#b0edea',
@@ -32,7 +35,7 @@ module.exports = {
           darker: '#004542'
         },
         // Accent colors
-        accent: {
+        'accent': {
           white: '#ffffff',
           whitehover: '#fffffd',
           whiteactive: '#fffef8',
@@ -43,12 +46,9 @@ module.exports = {
           normalhover: '#fffdf6',
           normalactive: '#fffcf1',
           dark: '#fffef9'
-        }
-      }
+        },
+      },
     }
   },
-  variants: {
-    extend: {}
-  },
   plugins: []
-};
+});
