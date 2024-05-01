@@ -5,13 +5,13 @@ const chatSchema = new Schema(
   {
     participants: [
       {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
       }
     ],
     lastMessage: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: 'Message'
     },
     unreadCount: {
